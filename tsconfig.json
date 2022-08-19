@@ -1,10 +1,11 @@
-
 {
     "include": [
-      "./**/*.ts"
+      "src/**/*.ts"
     ],
+    "exclude": [],
     "compilerOptions": {
       "target": "es2018",
+      "outDir": ".",
       "strict": true,
       "declaration": true,
       "forceConsistentCasingInFileNames": true,
