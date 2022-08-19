@@ -1,4 +1,18 @@
 {
+  "name": "hast-util-definition-list",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "index.js",
+  "files": [
+    "src",
+    "lib",
+    "./*.js",
+    "./*.d.ts"
+  ],
+  "exports": {
+    "development": "./src/index.js",
+    "default": "./index.js"
+  },
   "dependencies": {
     "hast-util-to-mdast": "^8.3.1"
   }

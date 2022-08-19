@@ -4,13 +4,24 @@
     ],
     "exclude": [],
     "compilerOptions": {
+      "lib": ["es2020"],
+      "module": "es2020",
       "target": "es2018",
+      "rootDir": "src",
       "outDir": ".",
       "strict": true,
+      "noImplicitAny": true,
+      "strictNullChecks": true,
+      "allowJs": true,
+      "checkJs": true,
       "declaration": true,
       "forceConsistentCasingInFileNames": true,
       "allowSyntheticDefaultImports": true,
       "esModuleInterop": true,
+      "allowUnreachableCode": false,
       "moduleResolution": "node"
+    },
+    "ts-node": {
+      "esm": true
     }
   }
