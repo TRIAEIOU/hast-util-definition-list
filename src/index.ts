@@ -1,11 +1,18 @@
-import {all} from 'hast-util-to-mdast';
-import type {H} from 'hast-util-to-mdast';
-import type {Node} from 'hast-util-to-mdast/lib';
+import type {State, Element} from 'hast-util-to-mdast/lib/types'
 
 const definitionListHastToMdast = {
-    dl: function (h: H, node: Node) { return h(node, 'defList', all(h, node)); },
-    dt: function (h: H, node: Node) { return h(node, 'defListTerm', all(h, node)); },
-    dd: function (h: H, node: Node) { return h(node, 'defListDescription', all(h, node)); }
-};
+    dl: function (state: State, node: Element) {return handler(state, node, 'defList')},
+    dt: function (state: State, node: Element) {return handler(state, node, 'defListTerm')},
+    dd: function (state: State, node: Element) {return handler(state, node, 'defListDescription')}
+}
 
-export {definitionListHastToMdast};
+function handler(state: State, node: Element, mdast: string) {
+    const children = state.all(node)
+    if (children.length > 0) {
+      const result = {type: mdast, children} as any
+      state.patch(node, result)
+      return result
+    }
+}
+
+export {definitionListHastToMdast}

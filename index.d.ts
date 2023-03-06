@@ -1,8 +1,7 @@
-import type { H } from 'hast-util-to-mdast';
-import type { Node } from 'hast-util-to-mdast/lib';
+import type { State, Element } from 'hast-util-to-mdast/lib/types';
 declare const definitionListHastToMdast: {
-    dl: (h: H, node: Node) => import("mdast").Content;
-    dt: (h: H, node: Node) => import("mdast").Content;
-    dd: (h: H, node: Node) => import("mdast").Content;
+    dl: (state: State, node: Element) => any;
+    dt: (state: State, node: Element) => any;
+    dd: (state: State, node: Element) => any;
 };
 export { definitionListHastToMdast };

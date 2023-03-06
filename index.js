@@ -1,7 +1,14 @@
-import { all } from 'hast-util-to-mdast';
 const definitionListHastToMdast = {
-    dl: function (h, node) { return h(node, 'defList', all(h, node)); },
-    dt: function (h, node) { return h(node, 'defListTerm', all(h, node)); },
-    dd: function (h, node) { return h(node, 'defListDescription', all(h, node)); }
+    dl: function (state, node) { return handler(state, node, 'defList'); },
+    dt: function (state, node) { return handler(state, node, 'defListTerm'); },
+    dd: function (state, node) { return handler(state, node, 'defListDescription'); }
 };
+function handler(state, node, mdast) {
+    const children = state.all(node);
+    if (children.length > 0) {
+        const result = { type: mdast, children };
+        state.patch(node, result);
+        return result;
+    }
+}
 export { definitionListHastToMdast };
